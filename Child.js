@@ -4,7 +4,8 @@
 import './App.css';
 import { useState } from 'react';
 import React, { Component } from 'react';
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ReportTime from './ReportTime';
 
 let i = 0;
 
@@ -115,6 +116,7 @@ console.log(a.name)}
 	 i = 0;
 	const [menuWidth, changeMenuWidth] = useState(0);
 	const [buttonWidth, changeButtonWidth] = useState(0);
+  const [redirect, setRedirect] = useState(false);
 
   function HandleClickMenu(){
       
@@ -124,13 +126,23 @@ console.log(a.name)}
     console.log('GRATTIS DU KAN KLICKA typ');
   }
 
+
  function reportTime(){
   if (buttonWidth === "250px"){
     return(
       <p>Report Time</p>
+     /* <Route>
+      <Route path="/ReportTime" component ={ReportTime} />
+      </Route> */
       );
   }
  }
+
+ function handleClickReport() {
+
+  console.log('hej du klickade på Report');
+   setRedirect(true);
+}
 
  function addActivity(){
   if (buttonWidth === "250px"){
@@ -150,6 +162,7 @@ console.log(a.name)}
   }
  }
   return (
+
     <div className="App">
  
       {/*Header*/}
@@ -176,7 +189,10 @@ console.log(a.name)}
        <div id="menuID" style={{width: menuWidth}}></div>
 
         <div className="buttonWrapper" style={{width: buttonWidth}}>
-        <div className="reportButton" style={{width: buttonWidth}}>{reportTime()}</div>
+        <div className="reportButton" style={{width: buttonWidth}} onClick={handleClickReport}>{reportTime()}</div>
+        
+
+
         <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
         <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
        </div>
@@ -189,7 +205,33 @@ console.log(a.name)}
           <div className="menu"></div>
         </div>
       </div>
+
+        <div>
+   
+//Det är detrta vi ska fixa
+      {redirect === false && 
+      <APPChild />
+      }
+      {redirect === true && 
+      <ReportTime  />
+      }
+      
     </div>
+   
+    </div>
+
+
+
+
+  
+    
+
+
+      
+      //{redirect === true && <ReportTime /> }
+    
+    
+
   );
 }
 

@@ -4,7 +4,12 @@ import logo from './logo.svg';
 import './App.css';
 import ReactDOM from "react-dom";
 import Child from "./Child.js";
+import ReportTime from "./ReportTime.js";
 
+//import HomePage from './pages/homepage';
+//import Page2 from './pages/page2';
+//import Page3 from './pages/page3';
+//import Menu from './components/menu';
 
 //vårt nästa sak är att vi vill försöka skicka vårt course till vårt child så att dem får en props
 function Parent(){
@@ -46,9 +51,10 @@ function Parent(){
     localData.push(courseToAdd);
     setData(localData);
   }
-
+/*
   function routerApp(){
     return(
+      
       <Router>
         <div>
           <li>
@@ -61,15 +67,31 @@ function Parent(){
       </Router>
     );
   }
+*/
+
+
+
+// main component of app is always one page (depending on url path) + Menu below
+
 
   return(
     <div>
+      
+
+     // <Router>
+
+     // <Route exact path = "/ReportTime" component={ReportTime} />
+
+     // </Router>
+     
+
       {redirect === false && 
       <App fixObjectEtikett={fixObject} />
       }
       {redirect === true && 
       <Child courses={localData} />
       }
+      
     </div>
   );
 }
@@ -112,7 +134,7 @@ function App(props) { // props eller inte props??
         <div className="WrapperAddActivity">
           <div className="WrapperNameDates">
             <p>Activity Name</p>
-            <input id="name" type="text" placeholder="Course name..." onChange={changeInput}/>
+            <input id="name" type="text" placeholder="Course Name..." onChange={changeInput}/>
           </div>
           <div className="WrapperNameDates"> 
             <p>Start Date</p> 
@@ -125,9 +147,9 @@ function App(props) { // props eller inte props??
           <div className="WrapperAddTime">
           <p>Set Time</p>
             <input id="hours" type="text" placeholder="Hours..." onChange={changeInput}/>
-            <p>h</p>
+            <p>Hours</p>
             <input id="min" type="text" placeholder="Min..." onChange={changeInput}/>
-            <p>m</p>
+            <p>Min</p>
           </div>
           <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="button">Save</button>
         </div>
