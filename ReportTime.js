@@ -107,18 +107,45 @@ function App(props) { // props eller inte props??
   } 
 
   return (
+
     <div className="App">
       <div className="App-header">
         <h1>Report Time</h1>  
-          <div className="WrapperAddTime">
-          <p>Set Time</p>
-            <input id="hours" type="text" placeholder="Hours..." onChange={changeInput}/>
-            <p>h</p>
-            <input id="min" type="text" placeholder="Min..." onChange={changeInput}/>
-            <p>m</p>
-          </div>
-          <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="button">Save</button>
         </div>
+         
+
+        {/*wrapper */}
+        <div className ="WrapperMain">
+
+          <div>
+          <p className ="ReportTimeText"> Activity </p>
+              <div className ="border" id ="activitySetTime">
+              </div>
+          </div>
+
+          <p className ="ReportTimeText" id="TimeStudied">Time studied</p>
+          
+
+          <div className ="border">
+
+            <div className="WrapperAddTime" id="centerDiv">
+
+              {/*textfält */}
+               <input className="TimeBox" id="hh" type="text" placeholder="hh" onChange={changeInput}/>
+               <p className="timeIndicator" id="hours">h</p>
+               <input className="TimeBox" id="mm" type="text" placeholder="mm" onChange={changeInput}/>
+               <p className="timeIndicator" id="minutes" >m</p>
+            </div>
+
+
+          </div>
+
+          </div>
+
+          <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="ReportButtonText">
+              <p className = "buttonText">Report Time</p>
+          </button>
+
       </div>
     
   );
